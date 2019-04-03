@@ -1,0 +1,9 @@
+RewriteEngine on
+
+# TO DO: add credentials "login-password"
+SetEnvIfNoCase User-Agent "" Test
+
+Order deny,allow
+Deny from all
+Allow from env=Test
+
