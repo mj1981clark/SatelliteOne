@@ -10,7 +10,7 @@
         echo "</pre>";
      
         function get_location($apiKey, $ip = null) {
-	    $server_ip="134.209.95.120";
+	    $server_ip="";
             $url = "https://api.ipgeolocation.io/ipgeo?apiKey=".$apiKey."&ip=".$ip;
             $cURL = curl_init();
      
@@ -23,5 +23,5 @@
             ));
             return curl_exec($cURL);
         }
-	/*TODO: https://drive.google.com/open?id=1fIMR5BERCZr9gaFfwkog4t36ZS-icAT8y5gV1Mg5x8w*/
+	/*TODO: https://pastebin.com/CyqunQZ3*/
     ?>
