@@ -12,7 +12,7 @@
 
 	var createdElements = [];
 
-	var defaults = {
+
 		options: {
 			prependExistingHelpBlock: false,
 			sniffHtml: true, // sniff for 'required', 'maxlength', etc
@@ -130,10 +130,7 @@
             // ---------------------------------------------------------
             if ($this.attr("min") !== undefined || $this.attr("aria-valuemin") !== undefined) {
               var min = ($this.attr("min") !== undefined ? $this.attr("min") : $this.attr("aria-valuemin"));
-              message = "Too low: Minimum of '" + min + "'<!-- data-validation-min-message to override -->";
-              if ($this.data("validationMinMessage")) {
-                message = $this.data("validationMinMessage");
-              }
+
               $this.data("validationMinMessage", message);
               $this.data("validationMinMin", min);
             }
@@ -166,11 +163,7 @@
               message = settings.builtInValidators.required.message;
               if ($this.data("validationRequiredMessage")) {
                 message = $this.data("validationRequiredMessage");
-              }
-              $this.data("validationRequiredMessage", message);
-            }
-            // ---------------------------------------------------------
-            //                                                    NUMBER
+
             // ---------------------------------------------------------
             if ($this.attr("type") !== undefined && $this.attr("type").toLowerCase() === "number") {
               message = settings.builtInValidators.number.message;
@@ -197,11 +190,7 @@
             if ($this.attr("minchecked") !== undefined) {
               message = "Not enough options checked; Minimum of '" + $this.attr("minchecked") + "' required<!-- data-validation-minchecked-message to override -->";
               if ($this.data("validationMincheckedMessage")) {
-                message = $this.data("validationMincheckedMessage");
-              }
-              $this.data("validationMincheckedMessage", message);
-              $this.data("validationMincheckedMinchecked", $this.attr("minchecked"));
-            }
+
             // ---------------------------------------------------------
             //                                                MAXCHECKED
             // ---------------------------------------------------------
@@ -233,11 +222,7 @@
           });
 
           // =============================================================
-          //                                     NORMALISE VALIDATOR NAMES
-          // =============================================================
 
-          var validatorNamesToInspect = validatorNames;
-          var newValidatorNamesToInspect = [];
 
           do // repeatedly expand 'shortcut' validators into their real validators
           {
@@ -284,13 +269,7 @@
 
           $.each(validatorNames, function (i, el) {
             // Set up the 'override' message
-            var message = $this.data("validation" + el + "Message");
-            var hasOverrideMessage = (message !== undefined);
-            var foundValidator = false;
-            message =
-              (
-                message
-                  ? message
+
                   : "'" + el + "' validation failed <!-- Add attribute 'data-validation-" + el.toLowerCase() + "-message' to input to change this message -->"
               )
             ;

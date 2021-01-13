@@ -19,11 +19,6 @@ var defaultOptions = {
     // ratio of "tail" to "acceleration"
     pulseAlgorithm   : true,
     pulseScale       : 8,
-    pulseNormalize   : 1,
-
-    // Acceleration
-    accelerationDelta : 20,  // 20
-    accelerationMax   : 1,   // 1
 
     // Keyboard Settings
     keyboardSupport   : true,  // option
@@ -42,11 +37,6 @@ var options = defaultOptions;
 var isExcluded = false;
 var isFrame = false;
 var direction = { x: 0, y: 0 };
-var initDone  = false;
-var root = document.documentElement;
-var activeElement;
-var observer;
-var deltaBuffer = [ 120, 120, 120 ];
 
 var key = { left: 37, up: 38, right: 39, down: 40, spacebar: 32, 
             pageup: 33, pagedown: 34, end: 35, home: 36 };
@@ -90,7 +80,6 @@ function init() {
     var body = document.body;
     var html = document.documentElement;
     var windowHeight = window.innerHeight; 
-    var scrollHeight = body.scrollHeight;
     
     // check compat mode for root element
     root = (document.compatMode.indexOf('CSS') >= 0) ? html : body;
@@ -106,7 +95,6 @@ function init() {
 
     /**
      * This fixes a bug where the areas left and right to 
-     * the content does not trigger the onmousewheel event
      * on some pages. e.g.: html, body { height: 100% }
      */
     else if (scrollHeight > windowHeight &&
@@ -122,9 +110,7 @@ function init() {
             underlay.style.clear = "both";
             body.appendChild(underlay);
         }
-    }
 
-    // disable fixed background
     if (!options.fixedBackground && !isExcluded) {
         body.style.backgroundAttachment = "scroll";
         html.style.backgroundAttachment = "scroll";

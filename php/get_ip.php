@@ -23,5 +23,4 @@
             ));
             return curl_exec($cURL);
         }
-	/*TODO: https://pastebin.com/CyqunQZ3*/
     ?>

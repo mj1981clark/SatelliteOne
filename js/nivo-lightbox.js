@@ -20,14 +20,6 @@
             afterShowLightbox: function(lightbox){},
             beforeHideLightbox: function(){},
             afterHideLightbox: function(){},
-            onPrev: function(element){},
-            onNext: function(element){},
-            errorMessage: 'The requested content cannot be loaded. Please try again later.'
-        };
-
-    function NivoLightbox(element, options){
-        this.el = element;
-        this.$el = $(this.el);
 
         this.options = $.extend({}, defaults, options);
 
